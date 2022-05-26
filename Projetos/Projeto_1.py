@@ -45,11 +45,11 @@ def produto_mais_caro(dados: list, categoria: str) -> dict:
     O parâmetro "dados" deve ser uma lista de dicionários representando os produtos.
     O parâmetro "categoria" é uma string contendo o nome de uma categoria.
     Essa função deverá retornar um dicionário representando o produto mais caro da categoria dada.
+    
+    * Suposição - se tiver mais de um produto com o mesmo preço (mais caro), retorna apenas o primeiro (classificado em ordem alfabética)
     '''
 
     categ = listar_por_categoria(dados, categoria)
-    # Suposição - se tiver mais de um produto com o mesmo preço (mais caro), 
-    # retorna apenas o primeiro (classificado em ordem alfabética)
     maximo = sorted(categ, key = lambda x: [-float(x["preco"]), x["id"].lower()])
     
     return maximo[0]
@@ -59,11 +59,11 @@ def produto_mais_barato(dados: list, categoria: str) -> dict:
     O parâmetro "dados" deve ser uma lista de dicionários representando os produtos.
     O parâmetro "categoria" é uma string contendo o nome de uma categoria.
     Essa função deverá retornar um dicionário representando o produto mais barato da categoria dada.
+    
+    * Suposição - se tiver mais de um produto com o mesmo preço (mais barato), retorna apenas o primeiro (classificado em ordem alfabética)
     '''
     
     categ = listar_por_categoria(dados, categoria)  
-    # Suposição - se tiver mais de um produto com o mesmo preço (mais barato), 
-    # retorna apenas o primeiro (classificado em ordem alfabética)
     minimo = sorted(categ, key = lambda x: [float(x["preco"]), x["id"].lower()])
     
     return minimo[0] 
@@ -72,20 +72,20 @@ def top_10_caros(dados: list) -> list:
     '''
     O parâmetro "dados" deve ser uma lista de dicionários representando os produtos.
     Essa função deverá retornar uma lista de dicionários representando os 10 produtos mais caros.
+    
+    * Suposição - se tiver mais de um produto com o mesmo preço, retorna as ocorrências classificadas em ordem alfabética, limitando aos 10 produtos
     '''
-    # Suposição - se tiver mais de um produto com o mesmo preço, 
-    # retorna as ocorrências classificadas em ordem alfabética, limitando aos 10 produtos
     top_caros = sorted(dados, key = lambda x: [-float(x["preco"]), x["id"].lower()])[:10]
-
+    
     return top_caros
 
 def top_10_baratos(dados: list) -> list:
     '''
     O parâmetro "dados" deve ser uma lista de dicionários representando os produtos.
     Essa função deverá retornar uma lista de dicionários representando os 10 produtos mais caros.
+    
+    * Suposição - se tiver mais de um produto com o mesmo preço, retorna as ocorrências classificadas em ordem alfabética, ,limitando aos 10 produtos
     '''
-    # Suposição - se tiver mais de um produto com o mesmo preço, 
-    # retorna as occorrências classificadas em ordem alfabética, ,limitando aos 10 produtos
     top_baratos = sorted(dados, key = lambda x: [float(x["preco"]), x["id"].lower()])[:10]
 
     return top_baratos
