@@ -109,30 +109,31 @@ def menu(dados: list):
     - Imprimir o retorno salvo. 
     O loop encerra quando a opção do usuário for 0.
     '''
-    opcao = int(input("Selecione a opção desejada: "))
+    opcao = input("Selecione a opção desejada: ")
+    opcoes = ["0","1","2","3","4","5","6"]
     
-    while opcao not in range(0,7):
-        opcao = int(input("Opção inválida, selecione uma das opções da lista: \n"))
+    while opcao not in opcoes:
+        opcao = input("Opção inválida, selecione uma das opções da lista: \n")
 
-    while opcao != 0:   
-        if opcao == 1:
+    while opcao != "0":   
+        if opcao == "1":
             resposta = lista_categorias(dados)
-        elif opcao in (2,3,4):
+        elif opcao in ("2","3","4"):
             categoria = (input("Insira a categoria desejada: \n"))
             while categoria not in lista_categorias(dados):
                 categoria = (input("Categoria inválida, insira novamente: \n"))
-            if opcao == 2:
+            if opcao == "2":
                 resposta = listar_por_categoria(dados, categoria)
-            if opcao == 3:
+            if opcao == "3":
                 resposta = produto_mais_caro(dados, categoria)
-            if opcao == 4:
+            if opcao == "4":
                 resposta = produto_mais_barato(dados, categoria)
-        elif opcao == 5:
+        elif opcao == "5":
             resposta = top_10_caros(dados)
         else:
             resposta = top_10_baratos(dados)
         
-        if opcao in (3,4):    
+        if opcao in ("3","4"):    
             print(resposta)
         else:
             print(*resposta, sep = "\n")
@@ -142,12 +143,14 @@ def menu(dados: list):
             validacao = input("Opção inválida, gostaria de escolher novamente? (S/N) ").upper()          
 
         if validacao == "S":
-            opcao = int(input("Selecione a opção desejada: "))
+            opcao = input("Selecione a opção desejada: ")
+            while opcao not in opcoes:
+                opcao = input("Opção inválida, selecione uma das opções da lista: \n")
         else:
-            opcao = 0
+            opcao = "0"
     
     
-# Programa Principal - não modificar!
+# Programa Principal - não modificar!s
 d = obter_dados()
 
 print('''------------------MENU------------------
@@ -162,5 +165,4 @@ print('''------------------MENU------------------
 menu(d)
 
 print("********** Fim do programa **********")
-
 
