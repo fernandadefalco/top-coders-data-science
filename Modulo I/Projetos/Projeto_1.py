@@ -164,4 +164,9 @@ print('''------------------MENU------------------
             0. Sair''')
 menu(d)
 
+<<<<<<< HEAD
 print("********** Fim do programa **********")
+=======
+print("********** Fim do programa **********")
+
+>>>>>>> b3b532420cd821e6ffa447025640f4e07fab61e1
